@@ -23,8 +23,12 @@
 #include "level_list.h"
 #include "zc_defs.h"
 
-
+#ifdef _WIN32
+#define ZLOG_DEFAULT_TIME_FMT "%Y-%m-%d %H:%M:%S"
+#else
 #define ZLOG_DEFAULT_TIME_FMT "%F %T"
+#endif
+
 #define	ZLOG_HEX_HEAD  \
 	"\n             0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F    0123456789ABCDEF"
 
@@ -79,7 +83,7 @@ static int zlog_spec_write_time_D(zlog_spec_t * a_spec, zlog_thread_t * a_thread
 		gettimeofday(&(a_thread->event->time_stamp), NULL);
 	}
 
-	/* 
+	/*
 	 * It is modified when time slips one second.
 	 * So it is a strong cache, as Default time format is always %F %T.
 	 * That's why I said %D is faster than %d()
@@ -428,7 +432,7 @@ static int zlog_spec_parse_print_fmt(zlog_spec_t * a_spec)
 	p = a_spec->print_fmt;
 	if (*p == '-') {
 		a_spec->left_adjust = 1;
-		p++; 
+		p++;
 	} else {
 		a_spec->left_adjust = 0;
 	}
