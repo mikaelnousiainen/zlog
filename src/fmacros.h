@@ -1,7 +1,9 @@
 #ifndef __zlog_fmacro_h
 #define __zlog_fmacro_h
 
-#define _DEFAULT_SOURCE
+#ifndef _DEFAULT_SOURCE
+#  define _DEFAULT_SOURCE
+#endif
 
 #ifndef _BSD_SOURCE
 # define _BSD_SOURCE
