@@ -9,6 +9,10 @@ message(STATUS "path : ${CMAKE_FIND_ROOT_PATH}")
 
 set(CMAKE_MODULE_PATH ${zlog_SOURCE_DIR}/cmake)
 
+option(ZLOG_BUILD_SHARED_LIBS "Build shared libraries." ON)
+option(ZLOG_BUILD_STATIC_LIBS "Build static libraries." ON)
+option(ZLOG_BUILD_CHK_CONF "Build zlog-chk-conf." ON)
+
 #=====================================
 # version of zlog
 #=====================================
